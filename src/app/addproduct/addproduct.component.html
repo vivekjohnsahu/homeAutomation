@@ -1,0 +1,61 @@
+<app-home></app-home>
+<div class="layout-content">
+  <div class="layout-content-body">
+    <div class="row gutter-xs">
+      <div class="col-md-8 card panel-body  " id="">
+        <div class="col-sm-12 col-md-12">
+          <div class="">
+            <form class="form form-horizontal" ngModelOptions>
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <label class="control-label">PRODUCT NAME</label>
+                        <input id="" class="form-control" type="text" name="product_name" [(ngModel)]="Producte.product_name" [ngModelOptions]="{standalone: true}" (focus)="clean()" >
+                        <p *ngIf="name_error" style="color:red;" >{{name_error_msg}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <label class="control-label">PRODUCT DESCRIPTION</label>
+                        <input id="" class="form-control" type="text" name="product_datial" [(ngModel)]="Producte.product_datial" [ngModelOptions]="{standalone: true}" (focus)="clean()">
+                        <p *ngIf="datial_error" style="color:red;">{{datial_error_msg}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <label class="control-label">PRODUCT PRICE</label>
+                        <input id="" class="form-control" type="number" name="product_price" [(ngModel)]="Producte.product_price" [ngModelOptions]="{standalone: true}" (focus)="clean()">
+                        <p *ngIf="price_error" style="color:red;">{{price_error_msg}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <label class="control-label">CATEGORY</label>
+                            <select class="form-control" name="product_catagory" [(ngModel)]="Producte.catagory"  [ngModelOptions]="{standalone: true}" (focus)="clean()">
+                              <option *ngFor="let x of totalRes">{{x.name}}</option>       
+                            </select>
+                        <p *ngIf="catagory_error" style="color:red;">{{catagory_error_msg}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <!-- <input type="file" (change)="handleImage($event)" class="fileUpload btn btn-primary " name="IMAGE" multiple [(ngModel)]="Producte.selectedImage" [ngModelOptions]="{standalone: true}" (focus)="clean()"/> -->
+                        <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".jpg,.jpeg,.png" multiple>
+                        <img src="" id="thumb" class="img_sty showimg"/>
+                        <p *ngIf="image_error" style="color:red;">{{image_error_msg}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class=" col-sm-8  col-md-8 ">
+                      <button class="btn btn-primary " type="submit" (click)="add()" style="position: absolute; bottom: -31px; margin: -43px; right: 371px;">ADD TO PRODUCT </button>
+                      <button class="btn btn-primary" routerLink="/add" style="position: absolute; right: 235px;bottom: -31px; margin: -43px;">PRODUCT VIEW</button>
+                    </div>
+                </div>
+            </form>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <img src="" id="list" class="img_sty showimg"/>
+</div>

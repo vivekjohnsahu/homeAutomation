@@ -1,0 +1,56 @@
+<app-home   ></app-home>
+<div class="addInterestPage"></div>
+<div class="layout-content">
+    <div class="layout-content-body body_lay">
+        <div class="title-bar">
+            <h1 class="title-bar-title">
+              <span class="d-ib">Add Product </span>
+            </h1>
+            <p class="title-bar-description">
+                <small>Welcome to Pet Chat</small>
+            </p>
+            <button class="btn btn-primary" routerLink="/addproduct">ADD PRODUCT</button>
+        </div>
+        <div class="row gutter-xs">
+            <div class="col-xs-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-actions">
+                            <button type="button" class="card-action card-toggler" title="Collapse"></button>
+                            <button type="button" class="card-action card-reload" title="Reload"></button>
+                        </div>
+                        <strong>User list</strong>
+                    </div>
+                    <div class="card-body">
+                        <table id="demo-datatables-responsive-2" class="table table-bordered table-striped table-nowrap dataTable" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th class="text-left">Sr. no.</th>
+                                    <th class="text-left">Interest name</th>
+                                    <th>Image</th>
+                                    <th class="text-left">Product Detail</th>
+                                    <th>Product Price</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let product of products; let i = index;"> 
+                                    <td class="text-left">{{i+1}}</td>
+                                    <td class="text-left">{{product.product}}</td>
+                                    <th><img height="40px" src="{{product.images}}" /></th>
+                                    <th class="text-left">{{product.datials}}</th>
+                                    <th>{{product.prices}} $</th>
+                                    <td class="text-center">
+                                        <button class="btn btn-danger btn-sm btn-labeled" type="button" (click)="delete(i)">
+                                            <span class="btn-label"><span class="icon icon-bank icon-lg icon-fw"></span></span>Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
