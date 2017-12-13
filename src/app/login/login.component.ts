@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import{ LoginService } from '../login.service';
+import{ LoginService } from '../services/login.service';
 import { Router } from '@angular/router';
 export interface loginparams{
   email: string;
@@ -77,7 +77,7 @@ this.services.user(this.loginparam).subscribe(
   },
   error => {
     this.invalid_error = true;
-    this.invalid_error_msg = "invalid login";
+    this.invalid_error_msg = "The email or password you entered is incorrect.";
   }
 );
 this.loginparam.email="";

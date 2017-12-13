@@ -1,42 +1,42 @@
 <div class="container">
-	<div class="row">
-    	<div class="container" id="formContainer">
-        <div class="login">
-          <div class="login-body">
-            <!-- <a class="login-brand" href="index.html">
-              <img class="img-responsive" src="img/logo.svg" alt="Elephant">
-            </a> -->
-            <h3 class="login-heading">Sign in</h3>
+  <div class="row">
+    <div class="container" id="formContainer">
+      <div class="login">
+        <div class="login-body">
+          <!-- <a class="login-brand" href="index.html">
+          <img class="img-responsive" src="img/logo.svg" alt="Elephant">
+          </a> -->
+          <h3 class="login-heading">Sign in2{{currentState}}</h3>
             <div class="login-form">
-                <div *ngIf="invalid_error" style="color:red;">{{invalid_error_msg}}</div>
-              <form data-toggle="md-validator">
-                <div class="md-form-group md-label-floating">
-                  <input class="md-form-control" type="email" name="email" [(ngModel)]="loginparam.email" spellcheck="false" autocomplete="off" data-msg-required="Please enter your email address." required (focus)="clean()">
-                  <!-- <label  class="md-control-label">Email</label> -->
-                  <p *ngIf="email_name_error" style="color:red;">{{email_name_error_msg}}</p>
-                </div>
-                <div class="md-form-group md-label-floating">
-                  <input class="md-form-control" type="password" name="password" [(ngModel)]="loginparam.password" minlength="6" data-msg-minlength="Password must be 6 characters or more." data-msg-required="Please enter your password." required (focus)="clean()">
-                  <!-- <label class="md-control-label">Password</label> -->
-                  <p *ngIf="pass_name_error" style="color:red;">{{pass_name_error_msg}}</p>
-                </div>
-                <div class="md-form-group md-custom-controls">
-                  <label class="custom-control custom-control-primary custom-checkbox">
-                    <input class="custom-control-input" type="checkbox" checked="checked" name="chek" [(ngModel)]="loginparam.chek">
-                    <span class="custom-control-indicator"></span>
-                    <span class="custom-control-label">Keep me signed in</span>
-                  </label>
+              <div *ngIf="invalid_error" style="color:red;">{{invalid_error_msg}}</div>
+                <form data-toggle="md-validator">
+                  <div class="md-form-group md-label-floating">
+                    <input class="md-form-control" type="email" name="email" [(ngModel)]="loginparam.email" spellcheck="false" autocomplete="off" data-msg-required="Please enter your email address." required (focus)="clean()">
+                    <!-- <label  class="md-control-label">Email</label> -->
+                    <p *ngIf="email_name_error" style="color:red;">{{email_name_error_msg}}</p>
+                  </div>
+                  <div class="md-form-group md-label-floating">
+                    <input class="md-form-control" type="password" name="password" [(ngModel)]="loginparam.password" minlength="6" data-msg-minlength="Password must be 6 characters or more." data-msg-required="Please enter your password." required (focus)="clean()">
+                    <!-- <label class="md-control-label">Password</label> -->
+                    <p *ngIf="pass_name_error" style="color:red;">{{pass_name_error_msg}}</p>
+                  </div>
+                  <div class="md-form-group md-custom-controls">
+                    <label class="custom-control custom-control-primary custom-checkbox">
+                      <input class="custom-control-input" type="checkbox" checked="checked" name="chek" [(ngModel)]="loginparam.chek">
+                      <span class="custom-control-indicator"></span>
+                      <span class="custom-control-label">Keep me signed in</span>
+                    </label>
                   <span aria-hidden="true"> · </span>
                   <a routerLink="/forgot">Forgot password?</a>
-                </div>
-                <button class="btn btn-primary btn-block" type="submit" (click)="login()">Sign in</button>
-              </form>
+                  </div>
+                  <button class="btn btn-primary btn-block" type="submit" (click)="login()">Sign in</button>
+                </form>
             </div>
-          </div>
-          <!-- <div class="login-footer">
-            Don't have an account? <a routerLink="/signup">Sign Up</a>
-          </div> -->
         </div>
+        <!-- <div class="login-footer">
+        Don't have an account? <a routerLink="/signup">Sign Up</a>
+        </div> -->
       </div>
     </div>
   </div>
+</div>

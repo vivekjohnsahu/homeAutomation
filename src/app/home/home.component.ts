@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import{ LogoutService } from '../logout.service';
+import{ LogoutService } from '../services/logout.service';
 import { Router } from '@angular/router';
 import * as $ from 'jquery'
 
@@ -13,6 +13,8 @@ import * as $ from 'jquery'
 export class HomeComponent implements OnInit {
 
   constructor(private services: LogoutService, private router: Router) { }
+  data =localStorage.getItem('edit'); 
+  userData:any;
 
   ngOnInit() {
     $(document).ready(function(){
@@ -114,31 +116,21 @@ export class HomeComponent implements OnInit {
                 //       $('.tabs-new').removeClass('stick');
                 //     }
                 // });
+                this.userData = JSON.parse(this.data);
     
  }
  logoutClicked(){
-
       this.services.logout().subscribe(
         data => {
           if(data.status == '200'){
-                // LogoutService.isAuthenticated = false;
-                // LogoutService.profile = null;
-                // LogoutService.profilePromise = null;
-                // LogoutService.idToken = null;
-                // LogoutService.state = null;
-                // LogoutService.accessToken = null;
-                // LogoutService.tokenPayload = null;
-            console.log(data)
+            localStorage.removeItem('access_token');
+            localStorage.removeItem('adminData');
+            this.router.navigateByUrl('/login');
           return false;
           }else{
 
           }   
         },
-        error => {
-        //   this.invalid_error = true;
-        //   this.invalid_error_msg = "The email you entered is incorrect."; 
-        }
     );
-    // this.email="";
     }
 }

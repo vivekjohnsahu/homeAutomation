@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { CatergoryService } from '../catergory.service';
-// import { FilterPipe } from '../filter.pipe';
-import{ ProductaddService } from '../productadd.service';
+import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
+import { CatergoryService } from '../services/catergory.service';
+import{ ProductaddService } from '../services/productadd.service';
+import * as $ from 'jquery'
 
 export interface Products{ 
   product_name:string;
@@ -39,8 +40,11 @@ export class AddproductComponent implements OnInit {
   catagory_error:boolean;
   totalRes:any;
   search:boolean=false;
+  fileListData:any;
+  fileListUrl:Array<any> = [];
 
-  constructor(private catergoryService:CatergoryService,private productaddService:ProductaddService) {
+
+  constructor(private catergoryService:CatergoryService, private productaddService:ProductaddService, private sanitizer: DomSanitizer) {
     this.totalRes=catergoryService.getpost();
    }
 
@@ -53,7 +57,7 @@ export class AddproductComponent implements OnInit {
       catagory:"",
       IMAGE:"",
     }
-  }
+}
 add(){
     if( this.Producte.product_name == "" || this.Producte.product_name == undefined ){
       this.name_error = true;
@@ -83,52 +87,36 @@ add(){
     }else {
       this.catagory_error = false;
      }
-    //  if( this.selectedImage == ""){
-    //   this.image_error = true;
-    //   this.image_error_msg = "image is required";
-    //   return false; 
-    // }else {
-    //   this.image_error = false;     
-    //  }
-     
-    let fileList = document.getElementById("thumb") as HTMLImageElement;
-    var obj={product:this.Producte.product_name,datials:this.Producte.product_datial,prices:this.Producte.product_price,catagory:this.Producte.catagory,images:fileList};
-    this.products.push(obj);
-    console.log(obj);
-    this.productaddService.create(obj).subscribe(
-      data => { 
-      },
-  );
-    this.Producte.product_name="";
-    // this.Producte.IMAGE="";
-    // this.fileList.src="";
-    this.Producte.product_datial="";
-    this.Producte.product_price=null;
-    this.Producte.catagory="";
-  }
-  // handleImage(event){
-  //   var files = event.srcElement.files;
-  //   //  console.log(files)
-  //   var myReader:FileReader = new FileReader();
-    
-  //   myReader.onloadend = function(e){
-  //     let src= myReader.result;
-  //     let thumbnailImage = document.getElementById("thumb") as HTMLImageElement;
-  //     thumbnailImage.src=src;
-  //   }
-  //   // let fileCount: number = files.length;
-  //   // // let formData = new FormData();
-  //   // if (fileCount > 0) { 
-  //   //   for (let i = 0; i < fileCount; i++){
-  //       // this.myReader.readAsDataURL.append('files[i]');
-  //       // console.log(formData)
-  //       var output = [];
-  //       for (var i = 0; i=files[i]; i++) {
-  //         output.push(output)
-  //         document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
-  //       }
-  //      myReader.readAsDataURL(files[0]);
-  // }
+     if(this.fileListData.length > 0) {
+      let file: File = this.fileListData[0];
+      let formData = new FormData();
+      formData.append('name', this.Producte.product_name);
+      formData.append('description', this.Producte.product_datial);
+      formData.append('price', this.Producte.product_price);
+      formData.append('category_id', this.Producte.catagory);
+      for(var i =0; i < this.fileListData.length; i++){
+        formData.append('image[]', this.fileListData[i]);
+      }
+      this.productaddService.create(formData).subscribe(
+      data => {
+       
+          },error => 
+          console.log(error)
+        );
+      }
+      this.Producte.product_name="";
+      this.Producte.product_datial="";
+      this.Producte.product_price=null;
+      this.Producte.catagory="";
+      this.fileListUrl=[];
+      $('input[type=file]').val(null);
+    }
+   fileChange(event) {
+    for(var i =0; i < event.target.files.length; i++){
+      this.fileListUrl[i] = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(event.target.files[i])); 
+    }
+    this.fileListData = event.target.files;   
+ }
   clean(){
     this.name_error = false;
     this.image_error = false;  
@@ -136,26 +124,7 @@ add(){
     this.price_error = false;
     this.catagory_error = false;
   }
-  fileChange(event) {
-    let fileList: FileList = event.target.files;
-    console.log(fileList);
-    // if(fileList.length > 0) {
-    //     let file: File = fileList[0];
-    //     let formData:FormData = new FormData();
-    //     formData.append('uploadFile[]', file, file.name);
-    //     let headers = new Headers();
-    //     /** No need to include Content-Type in Angular 4 */
-    //     headers.append('Content-Type', 'multipart/form-data');
-    //     headers.append('Accept', 'application/json');
-    //     let options = new RequestOptions({ headers: headers });
-    //     this.http.post(`${this.apiEndPoint}`, formData, options)
-    //         .map(res => res.json())
-    //         .catch(error => Observable.throw(error))
-    //         .subscribe(
-    //             data => console.log('success'),
-    //             error => console.log(error)
-    //         )
-    // }
-
-}
+  delete_img(i){
+    this.fileListUrl.splice(i,1);
+  }
 }

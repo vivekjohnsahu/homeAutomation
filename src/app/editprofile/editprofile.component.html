@@ -1,4 +1,3 @@
-<app-home></app-home>
 <div class="profilePage"></div>
 <div class="layout-content">
     <div class="layout-content-body">
@@ -20,17 +19,23 @@
                                     <div *ngIf="invalid_error" style="color:green;" >{{success_msg}}&#x2713;</div>
                                 <div class="col-md-8">
                                     <label for="email-2" class=" control-label">Name</label>
-                                    <input id="" class="form-control" name="name"  (focus)="clean()"  type="text" [(ngModel)]="edit.name" required>
+                                    <input id="" class="form-control" name="name"  (focus)="clean()"  type="text" [(ngModel)]="edit.first_name" required>
                                     <p *ngIf="name_error" style="color:red;" >{{name_error_msg}}</p>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-8">
                                     <label for="email-2" class=" control-label">Phone</label>
-                                    <input id="" class="form-control" type="text" [(ngModel)]="edit.phone" required name="phone" max="12" (focus)="clean()">
+                                    <input id="" class="form-control" type="text" [(ngModel)]="edit.phone_number" required name="phone" max="12" (focus)="clean()">
                                     <p *ngIf="phone_error"  style="color:red;" >{{phone_error_msg}}</p>
                                 </div>
                             </div>
+                            <!-- <div class="form-group">
+                                <div class="col-md-8">
+                                    <label for="email-2" class=" control-label">Image</label>
+                                    <input id="" class="form-control" type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".jpg,.jpeg,.png" required name="image">
+                                </div>
+                            </div> -->
                             <div class="form-group">
                                 <div class=" col-sm-8  col-md-8 ">
                                     <button class="btn btn-primary " (click)="add()" type="submit">Submit</button>

@@ -1,25 +1,25 @@
 <div class="login">
     <div class="login-body">
-      <!-- <a class="login-brand" href="index.html">
-        <img class="img-responsive" src="img/logo.svg" alt="Elephant">
-      </a> -->
-      <div class="login-form">
-        <form data-toggle="validator">
-          <div class="form-group">
-            <label for="email">Email</label>
-            <p *ngIf="invalid_error" style="color:red;">{{invalid_error_msg}}</p>
-            <p *ngIf=" success_error" style="color:green;">{{success_error_msg}}</p>
-            <input id="email" class="form-control" [(ngModel)]="email" type="email" name="email" spellcheck="false" autocomplete="off" (focus)="clean()" data-msg-required="Please enter your email address." required>
-            <p *ngIf="email_name_error" style="color:red;">{{email_name_error_msg}}</p>
-            <p class="help-block">
-              <small>If you've forgotten your password, we'll send you an email to reset your password.</small>
-            </p>
-          </div>
-          <button class="btn btn-primary btn-block" (click)="forgot()" type="submit">Send password reset email</button>
-        </form>
-      </div>
+        <!-- <a class="login-brand" href="index.html">
+          <img class="img-responsive" src="img/logo.svg" alt="Elephant">
+        </a> -->
+        <div class="login-form">
+            <form data-toggle="validator">
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <p *ngIf="invalid_error" style="color:red;">{{invalid_error_msg}}</p>
+                  <p *ngIf=" success_error" style="color:green;">{{success_error_msg}}</p>
+                  <input id="email" class="form-control" [(ngModel)]="email" type="email" name="email" spellcheck="false" autocomplete="off" (focus)="clean()" data-msg-required="Please enter your email address." required>
+                  <p *ngIf="email_name_error" style="color:red;">{{email_name_error_msg}}</p>
+                  <p class="help-block">
+                    <small>If you've forgotten your password, we'll send you an email to reset your password.</small>
+                  </p>
+                </div>
+              <button class="btn btn-primary btn-block" (click)="forgot()" type="submit">Send password reset email</button>
+            </form>
+        </div>
     </div>
     <div class="login-footer">
       <a routerLink="/login">back to login</a>
     </div>
-  </div>
+</div>

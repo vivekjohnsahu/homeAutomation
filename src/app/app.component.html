@@ -1,1 +1,127 @@
-<router-outlet></router-outlet>
+<div class="layout layout-header-fixed" id="bodySidebarToggle">
+    <div>
+    <div class="layout-header">
+        <div class="navbar navbar-default">
+            <div class="navbar-header">
+                <a class="navbar-brand navbar-brand-center" routerLink="/dashboard">
+                  <img class="navbar-brand-logo" src="assets/img/footer-logo.png" alt="Elephant">
+                </a>
+                <button class="navbar-toggler visible-xs-block collapsed" type="button" data-toggle="collapse" data-target="#sidenav">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="bars">
+                    <span class="bar-line bar-line-1 out"></span>
+                    <span class="bar-line bar-line-2 out"></span>
+                    <span class="bar-line bar-line-3 out"></span>
+                    </span>
+                    <span class="bars bars-x">
+                    <span class="bar-line bar-line-4"></span>
+                    <span class="bar-line bar-line-5"></span>
+                    </span>
+                </button>
+                <button class="navbar-toggler visible-xs-block collapsed" type="button" data-toggle="collapse" data-target="#sidenav">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="arrow-up"></span>
+                    <span class="ellipsis ellipsis-vertical">
+                    <img class="ellipsis-object" width="32" height="32" src="assets/img/0180441436.jpg" alt="Teddy Wilson">
+                    </span>
+                </button>
+            </div>
+        <div class="navbar-toggleable">
+            <nav id="navbar" class="navbar-collapse collapse">
+                <button class="sidenav-toggler hidden-xs" title="Collapse sidenav ( [ )" (click)="toggleSidebar()" id="home_toggle" aria-expanded="true" type="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="bars">
+                    <span class="bar-line bar-line-1 out"></span>
+                    <span class="bar-line bar-line-2 out"></span>
+                    <span class="bar-line bar-line-3 out"></span>
+                    <span class="bar-line bar-line-4 in"></span>
+                    <span class="bar-line bar-line-5 in"></span>
+                    <span class="bar-line bar-line-6 in"></span>
+                    </span>
+                </button>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" routerLink="#" role="button" data-toggle="dropdown" aria-haspopup="true">
+                            <span class="icon-with-child hidden-xs">
+                            <span class="icon icon-bell-o icon-lg"></span>
+                            <span class="badge badge-danger badge-above right">7</span>
+                            </span>
+                            <span class="visible-xs-block">
+                            <span class="icon icon-bell icon-lg icon-fw"></span>
+                            <span class="badge badge-danger pull-right">7</span>
+                            Notifications
+                            </span>
+                        </a>
+                    </li>
+                    <li class="dropdown hidden-xs" id="hide_dropdown">
+                        <button class="navbar-account-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (mouseenter)="tooglelogout()">
+                        <img class="rounded" width="36" height="36" src="assets/img/0180441436.jpg" alt="Teddy Wilson">
+                        <!-- {{userData.first_name}} -->
+                        <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right" id="hideendropdown">
+                            <li id="hide_profile"><a routerLink="/profile">Profile</a></li>
+                            <li id="hide_sing" style="cursor:pointer" (click)="logoutClicked()" ><a>Sign out</a></li>
+                        </ul>
+                    </li>
+                    <li class="visible-xs-block">
+                        <a routerLink="contacts.html">
+                            <span class="icon icon-users icon-lg icon-fw"></span>
+                            Contacts
+                        </a>
+                    </li>
+                    <li class="visible-xs-block">
+                        <a routerLink="profile.html">
+                            <span class="icon icon-user icon-lg icon-fw"></span>
+                            Profile
+                        </a>
+                    </li>
+                    <li class="visible-xs-block">
+                        <a routerLink="login-1.html">
+                            <span class="icon icon-power-off icon-lg icon-fw"></span>
+                            Sign out
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+     </div>
+  </div>
+</div>
+<div class="layout-main">
+    <div>
+        <div class="layout-sidebar">
+            <div class="layout-sidebar-backdrop"></div>
+            <div class="layout-sidebar-body">
+                <div class="custom-scrollbar" id="navbar" >
+                    <nav class="sidenav-collapse collapse">
+                        <ul class="sidenav" id="sidenav" style="cursor:pointer"> 
+                            <li class="sidenav-heading">Navigation</li>
+                            <li class="sidenav-item dashboardPageNav">
+                                <a routerLink="/dashboard" aria-haspopup="true">
+                                    <span class="sidenav-icon icon icon-home"></span>
+                                    <span class="sidenav-label">Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="sidenav-item profilePageNav">
+                                <a routerLink="/profile" aria-haspopup="true">
+                                    <span class="sidenav-icon icon icon-user"></span>
+                                    <span class="sidenav-label">Profile</span>
+                                </a>
+                            </li>
+                            <li class="sidenav-item addInterestNav">
+                                <a routerLink="/add" aria-haspopup="true">
+                                    <span class="sidenav-icon icon icon-list"></span>
+                                    <span class="sidenav-label">Product Detail</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layout-content">
+        <router-outlet></router-outlet>
+    </div>
+</div>

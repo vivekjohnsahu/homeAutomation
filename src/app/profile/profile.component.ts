@@ -9,8 +9,12 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 export class ProfileComponent implements OnInit {
 
   constructor() { }
-
+  data =localStorage.getItem('edit'); 
+  userData:any;
   ngOnInit() {
+    // console.log(JSON.parse(this.data));
+    // console.log(this.data.first_name);
+    console.log(JSON.parse(localStorage.getItem('edit')));
+    this.userData = JSON.parse(this.data);
   }
-
 }

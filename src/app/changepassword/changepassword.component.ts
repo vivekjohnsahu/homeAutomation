@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import{ ChangepasswordService } from '../changepassword.service';
+import{ ChangepasswordService } from '../services/changepassword.service';
 export interface changes{ 
   old_password:any;
   password:any;

@@ -1,51 +1,18 @@
-/* .img_sty{
-    position: absolute;
-    right: 324px;
-    bottom: -10px;
-    height: 40px;
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
 }
-.fileUpload {
-    position: relative;
-    overflow: hidden;
-    margin: 10px;
-    position: absolute;
-    right: 188px;
-    bottom: -44px;
-    background-color:#6600ff !important
+.img_dco{
+    background-color: #2c3e50;
+    width: 144px;
+    height: 32px;
+    color: white;
+    text-align: center;
+    margin: 0px;
+    padding: 9px;
+    border-radius: 17px;
 }
-.fileUpload input.upload {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
-    cursor: pointer;
-    opacity: 0;
-    filter: alpha(opacity=0);
-}
-.showimg{
-    position: absolute;
-    bottom: -34px;
-    right: 142px;
-}
-.ul_contry{
-	position: relative; */
-    /* border: 2px solid #ccc; */
-    /* box-shadow: 1px 0px 3px #cfcfcf; */
-    /* padding: 0px;
-    bottom: 16px;
-    width: 455px;
-    right: -15px;
-    
-}
-.li_contry{
-	padding: 1px;
-	border-bottom: 1px solid #cfcfcf;
-	list-style: none;
-    cursor: pointer;
-    bottom: 10px;
-}
-.li_contry:hover{ */
-	/* background-color: #cfcfcf; */
-/* } */
