@@ -34,9 +34,10 @@ ngOnInit() {
       // this.testResponse = data;
       // console.log("I CANT SEE DATA HERE: ", this.testResponse);
       // console.log(data.response)
-      // console.log(this.products_detail);
-      this.products_detail = data.response.result;
+
+      this.products_detail = data.response;
       this.current_product = this.products_detail.slice(this.startIndex,this.startIndex+this.pageSize);
+      // console.log({product:this.current_product})
       this.currentPage = 1;
       this.pageStart = 1;
       this. loading=false;
