@@ -1,0 +1,36 @@
+<div class="login">
+	<div class="login-body">
+		<a class="login-brand" href="#">
+			<img class="img-responsive" src="assets/img/logo-blk.png" alt="logo">
+		</a>
+		<div class="login-form">
+		<form data-toggle="validator">
+			<div class="errorContainerWrap" *ngIf="showLoginError">
+				<div class="alert alert-danger alert-dismissable fade in">
+					<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+					<strong>Error! </strong>
+					<span class="errorContainer">{{login_error_msg}}</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input id="email" class="form-control" type="email" name="email" autocomplete="off" [(ngModel)]="email" required>
+				<span class="error" *ngIf="showEmailError">*{{login_email_msg}}</span>
+			</div>
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input id="password" class="form-control" type="password" name="password" [(ngModel)]="password" required>
+				<span class="error" *ngIf="showPasswordError">*{{login_password_msg}}</span>
+			</div>
+			<div class="form-group">
+				<label class="custom-control custom-control-primary custom-checkbox">
+					<input class="custom-control-input" type="checkbox" checked="checked">
+					<span class="custom-control-indicator"></span>
+					<span class="custom-control-label">Keep me signed in</span>
+				</label>
+			</div>
+			<button class="btn btn-primary btn-block" type="submit" (click)="login()">Sign in</button>
+		</form>
+		</div>
+	</div>
+</div>

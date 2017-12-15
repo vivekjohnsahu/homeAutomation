@@ -1,0 +1,75 @@
+.srch-opt input[type=text] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-image: url('/assets/img/searchicon.png');
+    background-color: white;
+    background-position: 9px 3px; 
+    background-repeat: no-repeat;
+    padding: 0px 20px 2px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    position: absolute;
+    right: 17px;
+    top: 67px;
+}
+.srch-opt input[type=text]:focus {
+    width: 20%;
+}
+.pagination {
+     margin: 0px !important;
+     cursor: pointer;
+}
+#abc {
+width:100%;
+height:100%;
+opacity:.95;
+top:0;
+left:0;
+display:none;
+position:fixed;
+background-color:#313131;
+overflow:auto
+}
+img#close {
+position:absolute;
+right:-14px;
+top:-14px;
+cursor:pointer
+}
+div#popupContact {
+    position: absolute;
+    left: 60%;
+    top: 35%;
+    transform: translate(-50%, -50%);
+    font-family: 'Raleway',sans-serif;
+}
+.popup_cls {
+width: 669px;
+min-width:250px;
+padding:10px 50px;
+border:2px solid gray;
+border-radius:10px;
+font-family:raleway;
+background-color:#fff;
+position: relative;
+left: -156px;
+}
+h2 {
+background-color:#FEFFED;
+padding:20px 35px;
+margin:-10px -50px;
+text-align:center;
+border-radius:10px 10px 0 0
+}
+hr {
+margin:10px -50px;
+border:0;
+border-top:1px solid #ccc
+}
+.desc{
+    width: 400px;
+}
+

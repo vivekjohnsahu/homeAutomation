@@ -1,0 +1,30 @@
+<div class="layout-sidebar">
+  <div class="layout-sidebar-backdrop"></div>
+  <div class="layout-sidebar-body">
+    <div class="custom-scrollbar">
+		<nav class="sidenav-collapse collapse">
+			<ul class="sidenav" id="sidenav">
+				<li class="sidenav-heading">Navigation</li>
+				<li class="sidenav-item">
+					<a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/dashboard']" aria-haspopup="true">
+						<span class="sidenav-icon icon icon-home"></span>
+						<span class="sidenav-label">Dashboard</span>
+					</a>
+				</li>
+				<li class="sidenav-item">
+					<a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/profile']" aria-haspopup="true">
+						<span class="sidenav-icon icon icon-home"></span>
+						<span class="sidenav-label">Profile</span>
+					</a>
+				</li>
+				<li class="sidenav-item">
+					<a [routerLinkActive]="['active']" [routerLink]="['/category']" aria-haspopup="true">
+						<span class="sidenav-icon icon icon-user"></span>
+						<span class="sidenav-label">Category Managment</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+    </div>
+  </div>
+</div>

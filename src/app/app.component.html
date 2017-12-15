@@ -1,0 +1,16 @@
+<div *ngIf="loginSession">
+	<login></login>
+</div>
+<div *ngIf="logoutSession">
+	<div class="layout-header">
+		<navbar></navbar>
+	</div>
+	<div class="layout-main">
+		<sidebar></sidebar>
+		<div class="layout-content">
+			<div class="layout-content-body">
+				<router-outlet></router-outlet>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,139 @@
+<div class="addInterestPage"></div>
+<div class="layout-content-body body_lay srch-opt">
+    <input type="text" name="search" placeholder="Search...."  [(ngModel)]="searchText">
+        <div class="title-bar">
+            <h1 class="title-bar-title">
+                <span class="d-ib">Add Product </span>
+            </h1>
+            <p class="title-bar-description">
+                <small>Welcome to Smart Home</small>
+            </p>
+            <button class="btn btn-primary" routerLink="/app-product">ADD PRODUCT</button>
+        </div>
+        <div class="row gutter-xs">
+            <div class="col-xs-12">
+                <div class="card">
+                    <div class="card-header">
+                        <!-- <div class="card-actions">
+                            <button type="button" class="card-action card-toggler" title="Collapse"></button>
+                            <button type="button" class="card-action card-reload" title="Reload"></button>
+                        </div> -->
+                        <strong>User list</strong>
+                    </div>
+                    <div class="card-body">       
+                        <table class="table table-striped" [mfData]="products_detail" #mf="mfDataTable" [mfRowsOnPage]="5">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <mfDefaultSorter by="name" class="">NO</mfDefaultSorter>
+                                    </th>
+                                    <th>
+                                        <mfDefaultSorter by="email">NAME</mfDefaultSorter>
+                                    </th>
+                                    <th>
+                                        <mfDefaultSorter by="age">IMAGE</mfDefaultSorter>
+                                    </th>
+                                    <th>
+                                        <mfDefaultSorter by="city">CAREGORY</mfDefaultSorter>
+                                    </th>
+                                    <th>
+                                        <mfDefaultSorter by="city">PRICE</mfDefaultSorter>
+                                    </th>
+                                    <th>
+                                        <mfDefaultSorter by="city">All DETAILS</mfDefaultSorter>
+                                    </th>
+                                    <th>
+                                        <mfDefaultSorter by="city">DELETE</mfDefaultSorter>
+                                     </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let p of  current_product | filter : searchText; let i = index;"> 
+                                    <th>{{10*(currentPage-1) + i+1}}</th>
+                                    <th>{{p.name}}</th>
+                                    <th><img height="40px" width="60" src="http://54.162.3.238:3005/{{p.image[0].image_url}}"/></th>
+                                    <!-- <th class="text-center">{{p.description}}</th> -->
+                                    <th>{{p.category_id}}</th>
+                                    <th>{{p.price}}</th>
+                                    <th>
+                                        <a class="btn btn-success btn-sm btn-labeled" >
+                                            <a (click)="div_show(p.product_id,i)" style="color: #ffffff; text-decoration: none;"><span class="btn-label"><span class="icon icon-info icon-lg icon-fw"></span></span>All detail</a>
+                                        </a>
+                                    <th>
+                                        <button class="btn btn-danger btn-sm btn-labeled" type="button" (click)="delete(p.product_id, i)" data-id="{{p.product_id}}">
+                                            <span class="btn-label"><span class="icon icon-bank icon-lg icon-fw"></span></span>Delete
+                                        </button>
+                                    </th>
+                                </tr><br>
+                                <div [hidden]="!loading">
+                                    <div *ngIf="(current_product | filter : searchText).length === 0">
+                                        LOADING.......
+                                    </div>
+                                </div>
+                                <div [hidden]="!no_data_found">
+                                    <div *ngIf="(current_product | filter : searchText).length === 0">
+                                        NO DATA FOUND
+                                    </div>
+                                </div>
+                            </tbody>
+                        </table><br>
+                        <div class="btn-toolbar" role="toolbar" style="margin: 0;">
+                            <div class="btn-group">
+                                    <label style="margin-top:10px">Page {{currentPage}}/{{pageNumber}}</label>
+                            </div>
+                            <div class="btn-group pull-right">
+                                <ul class="pagination" >
+                                    <li [ngClass]="{'disabled': (currentPage == 1 || pageNumber == 0)}" ><a (click)="prevPage()">Prev</a></li>
+                                    <li *ngFor="let page of pages"  [ngClass]="{'active': (currentPage == page)}">
+                                        <a (click)="setPage(page)">{{page}}</a>
+                                    </li>
+                                    <li [ngClass]="{'disabled': (currentPage == pageNumber || pageNumber == 0)}" ><a (click)="nextPage()">Next</a></li>
+                    
+                                   <!-- <select [(ngModel)]="pageSize">  
+                                        <option class="paginate_button" value="5"><a>5</a></option>
+                                        <option class="paginate_button" value="10"><a>10</a></option>
+                                        <option class="paginate_button" value="20"><a>20</a></option>
+                                        <option class="paginate_button" value="50"><a>50</a></option>
+                                        <option class="paginate_button" value="100"><a>100</a></option>   
+                                   </select> -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<div id="abc">
+    <div id="popupContact">
+        <div action="#" id="form" method="post" name="form" class="popup_cls">
+            <img id="close" src="assets/img/3.png"  (click) ="div_hide()">
+            <h2>Product Details</h2>
+                <div *ngFor="let product of details" class="col-md-3 p-b-md">
+                    <h1><img height="100px"  src="http://54.162.3.238:3005/{{product.image_url}}"/></h1><br> 
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>NAME :</label>
+                        <div>{{productD.name}}</div><br>
+                    </div>                      
+                    <div class="col-md-12">
+                        <label>DESCRIPTION :</label>
+                        <div class="desc">{{productD.description}}</div><br>
+                    </div>
+                    <div class="col-md-12">
+                        <label>CATEGORY :</label>
+                        <div>{{productD.category_id}}</div><br>
+                    </div>
+                    <div class="col-md-12">
+                        <label>PRICE :</label>
+                        <div>{{productD.price}}</div> 
+                    </div> 
+                </div>             
+        </div>
+    </div>
+</div>
+
+
+
+
