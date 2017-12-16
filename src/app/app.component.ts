@@ -22,7 +22,7 @@ export class AppComponent {
 		this.userItem = localStorage.getItem("user");
 		this.access_token = localStorage.getItem('access_token');
 		if(this.access_token != null) {
-			// router.navigate(['dashboard']);
+			router.navigate(['dashboard']);
 			this.logoutSession = true;
 			this.user_unique_id = this.userItem.user_id;
 		} else {

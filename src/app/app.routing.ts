@@ -60,7 +60,12 @@ export const routes: Routes = [
     data: {
       title: 'product'
     }
-  }
+  },
+  { 
+    path: '', 
+    redirectTo: '/dashboard', 
+    pathMatch: 'full'
+   },
 ];
 
 @NgModule({

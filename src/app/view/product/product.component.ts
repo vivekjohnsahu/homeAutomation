@@ -61,7 +61,7 @@ export class ProductComponent implements OnInit {
         console.log(this.totalRes)
       });
 }
-add(catagory_id){
+add(category_id){
     if( this.Producte.product_name == "" || this.Producte.product_name == undefined ){
       this.name_error = true;
       this.name_error_msg = "name is required";
@@ -99,6 +99,7 @@ add(catagory_id){
       formData.append('category_id', this.Producte.catagory);
       for(var i =0; i < this.fileListData.length; i++){
         formData.append('image[]', this.fileListData[i]);
+        console.log(formData)
       }
       // console.log(this.Producte)
       this.productaddService.create(formData).subscribe(

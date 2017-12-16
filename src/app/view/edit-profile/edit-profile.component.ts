@@ -62,7 +62,7 @@ export class EditProfileComponent implements OnInit {
           // let file: File = this.fileListData[0];
           // console.log(file);
           // localStorage.setItem('image', this.fileListData);  
-          localStorage.setItem('edit', JSON.stringify(data.response));
+          localStorage.setItem('user', JSON.stringify(data.response));
           let user = JSON.parse(localStorage.getItem('user'));
           this.invalid_error = true;
           this. success_msg = "Edit profile.";
