@@ -8,7 +8,7 @@
                           <div class="form-group">
                               <div class="col-md-8">
                                   <label class="control-label">PRODUCT NAME</label>
-                                     <input id="" class="form-control" type="text" name="product_name" [(ngModel)]="Producte.product_name" [ngModelOptions]="{standalone: true}" (focus)="clean()" >
+                                     <input id="" class="form-control" type="text" name="product_name" [(ngModel)]="Producte.name" [ngModelOptions]="{standalone: true}" (focus)="clean()" >
                                   <p *ngIf="name_error" style="color:red;" >{{name_error_msg}}</p>
                               </div>
                           </div>
