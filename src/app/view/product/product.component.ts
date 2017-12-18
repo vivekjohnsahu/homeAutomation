@@ -41,6 +41,8 @@ export class ProductComponent implements OnInit {
   search: boolean = false;
   fileListData: any;
   fileListUrl: Array < any > = [];
+  valid_error: boolean;
+  success_msg: string;
 
 
   constructor(private catergoryService: CatergoryService, private productaddService: ProductaddService, private sanitizer: DomSanitizer) {}
@@ -102,7 +104,10 @@ add(category_id){
       // console.log(this.Producte)
       this.productaddService.create(formData).subscribe(
         data => {
-
+          if (data.status == '200') {
+            this.valid_error = true;
+            this. success_msg = "Product Is Successfully Loaded ";
+          }
         }, error =>
         console.log(error)
       );
@@ -126,6 +131,7 @@ add(category_id){
     this.datial_error = false;
     this.price_error = false;
     this.catagory_error = false;
+    this.valid_error = false;
   }
   delete_img(i) {
     this.fileListUrl.splice(i, 1);

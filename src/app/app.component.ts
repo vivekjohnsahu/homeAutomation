@@ -21,6 +21,7 @@ export class AppComponent {
 	constructor(private route:ActivatedRoute, router: Router, private _service: AdminService){
 		this.userItem = localStorage.getItem("user");
 		this.access_token = localStorage.getItem('access_token');
+		// console.log()
 		if(this.access_token != null) {
 			router.navigate(['dashboard']);
 			this.logoutSession = true;

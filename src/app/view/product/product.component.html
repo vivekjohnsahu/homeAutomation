@@ -6,6 +6,7 @@
                   <div class="">
                       <form class="form form-horizontal" ngModelOptions>
                           <div class="form-group">
+                                <p *ngIf="valid_error" style="color:green;" >{{success_msg}}</p>
                               <div class="col-md-8">
                                   <label class="control-label">PRODUCT NAME</label>
                                      <input id="" class="form-control" type="text" name="product_name" [(ngModel)]="Producte.product_name" [ngModelOptions]="{standalone: true}" (focus)="clean()" >

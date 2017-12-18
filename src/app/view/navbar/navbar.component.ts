@@ -34,6 +34,10 @@ export class NavbarComponent  {
 		  }   
 	   },
 	   error=>{
+			 
+				localStorage.removeItem("user");
+				localStorage.removeItem('access_token');
+				window.location.replace('/Login');
 			// localStorage.removeItem("user");
 			// localStorage.removeItem("access_token");
 	  	// this.router.navigateByUrl('/Login');
