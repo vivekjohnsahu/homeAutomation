@@ -1,0 +1,98 @@
+<div class="layout-content-body body_lay srch-opt">
+  <input type="text" name="search" placeholder="Search...."  [(ngModel)]="SearchUser">
+      <div class="title-bar">
+          <h1 class="title-bar-title">
+              <span class="d-ib">User List </span>
+          </h1>
+          <p class="title-bar-description">
+              <small>Welcome to Smart Home</small>
+          </p>
+      </div>
+      <div class="row gutter-xs">
+          <div class="col-xs-12">
+              <div class="card">
+                  <div class="card-header">
+                      <strong>User list</strong>
+                  </div>
+                  <div class="card-body">       
+                      <table class="table table-striped" [mfData]="userregisterlist" #mf="mfDataTable" [mfRowsOnPage]="7">
+                          <thead>
+                              <tr>
+                                  <th>
+                                      <mfDefaultSorter by="no" class="">NO</mfDefaultSorter>
+                                  </th>
+                                  <th>
+                                      <mfDefaultSorter by="name">NAME</mfDefaultSorter>
+                                  </th>
+                                  <th>
+                                    <mfDefaultSorter by="phone">PHONE NUMBER</mfDefaultSorter>
+                                  </th>
+                                  <th>
+                                    <mfDefaultSorter by="email">EMAIL</mfDefaultSorter>
+                                  </th>
+                                  <th>
+                                      <mfDefaultSorter by="image">IMAGE</mfDefaultSorter>
+                                  </th>
+                                  <th>
+                                      <mfDefaultSorter by="unblock">UNBLOCK</mfDefaultSorter>
+                                  </th>
+                                  <th>
+                                      <mfDefaultSorter by="block">BLOCK</mfDefaultSorter>
+                                  </th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let user of  current_user | usersearch : SearchUser; let i = index;"> 
+                                  <th>{{pageSize*(currentPage-1) + i+1}}</th>
+                                  <th>{{user.first_name}} {{user.last_name}}</th>
+                                  <th>{{user.phone_number}}</th>
+                                  <th>{{user.email}}</th>
+                                  <th><img height="40px" width="60" src="http://54.162.3.238:3005/{{user.profile_image.image_url}}"/></th>  
+                                  <th>
+                                      <a class="btn btn-success btn-sm btn-labeled" >
+                                          <a style="color: #ffffff; text-decoration: none;"><span class="btn-label"><span class="icon icon-info icon-lg icon-fw"></span></span>UNBLOCK</a>
+                                      </a>
+                                  <th>
+                                      <button class="btn btn-danger btn-sm btn-labeled" type="button">
+                                          <span class="btn-label"><span class="icon icon-bank icon-lg icon-fw"></span></span>BLOCK
+                                      </button>
+                                  </th>
+                                </tr><br>
+                                <div [hidden]="!loading">
+                                    <div *ngIf="(current_user | usersearch : SearchUser).length === 0">
+                                        LOADING.......
+                                    </div>
+                                </div>
+                                <div [hidden]="!no_data_found">
+                                    <div *ngIf="(current_user | usersearch : SearchUser).length === 0">
+                                        NO DATA FOUND
+                                    </div>
+                                </div>
+                            </tbody>
+                      </table><br>
+                      <div class="btn-toolbar" role="toolbar" style="margin: 0;">
+                        <div class="btn-group">
+                                <label style="margin-top:10px">Page {{currentPage}}/{{pageNumber}}</label>
+                        </div>
+                        <div class="btn-group pull-right">
+                            <ul class="pagination">
+                                <!-- <select [(ngModel)]="pageSize">
+                                    <option value="3">3</option>
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="20">20</option>
+                                    <option value="50">50</option>
+                                  </select> -->
+                                <li [ngClass]="{'disabled': (currentPage == 1 || pageNumber == 0)}" ><a (click)="prevPage()">Prev</a></li>
+                                <li *ngFor="let page of pages"  [ngClass]="{'active': (currentPage == page)}">
+                                    <a (click)="setPage(page)">{{page}}</a>
+                                </li>
+                                <li [ngClass]="{'disabled': (currentPage == pageNumber || pageNumber == 0)}" ><a (click)="nextPage()">Next</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+</div>

@@ -26,17 +26,18 @@ export class NavbarComponent {
 				window.location.replace('/Login');
 				// this.router.navigate(['/Login']);
 			return false;
-			}else{
-		  }   
-	   },
-	   error=>{
-			 
+			}else if(data.status == '401'){
 				localStorage.removeItem("user");
 				localStorage.removeItem('access_token');
 				window.location.replace('/Login');
-			// localStorage.removeItem("user");
-			// localStorage.removeItem("access_token");
-	  	// this.router.navigateByUrl('/Login');
+				return false;
+		  }else{
+		  }      
+	   },
+	   error=>{	 
+				localStorage.removeItem("user");
+				localStorage.removeItem('access_token');
+				window.location.replace('/Login');
 	   }
 	);
 

@@ -16,6 +16,11 @@ import { AppRoutingModule } from './app.routing';
 import { ChangePasswordComponent } from './view/change-password/change-password.component';
 import { EditProfileComponent } from './view/edit-profile/edit-profile.component';
 import { ProductComponent } from './view/product/product.component';
+import { Ng2FileRequiredModule } from 'ng2-file-required';
+import { UserListComponent } from './view/user-list/user-list.component';
+import { UsersearchPipe } from './Pipe/usersearch.pipe';
+import { ForgotComponent } from './view/forgot/forgot.component';
+import { EditerComponent } from './view/editer/editer.component';
 
 @NgModule({
   imports: [ 
@@ -23,7 +28,9 @@ import { ProductComponent } from './view/product/product.component';
     AppRoutingModule, 
     FormsModule, 
     HttpModule,
-    DataTableModule
+    DataTableModule,
+    Ng2FileRequiredModule,
+
   ],
   declarations: [ 
     AppComponent, 
@@ -37,6 +44,10 @@ import { ProductComponent } from './view/product/product.component';
     EditProfileComponent,
     FilterPipe,
     ProductComponent,
+    UserListComponent,
+    UsersearchPipe,
+    ForgotComponent,
+    EditerComponent,
   ],
   bootstrap: [ AppComponent ]
 })

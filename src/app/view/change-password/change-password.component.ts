@@ -74,13 +74,20 @@ export class ChangePasswordComponent implements OnInit {
         this.invalid_error = true;
         this.invalid_error_msg = "password is missing."; 
         return false;
-      }else {
+      }else if(data.status == '401'){
+        localStorage.removeItem("user");
+        localStorage.removeItem('access_token');
+        window.location.replace('/Login');
+        return false;
+      }
+      else {
         this.valid_error = false;
       }
     },
      error => {
-        this.invalid_error = true;
-        this.invalid_error_msg = "password is missing.";
+      localStorage.removeItem("user");
+      localStorage.removeItem('access_token');
+      window.location.replace('/Login');
       }
   );
   this.change.old_password="";

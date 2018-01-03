@@ -1,6 +1,6 @@
 <div class="navbar navbar-default">
     <div class="navbar-header">
-      <a class="navbar-brand navbar-brand-center" routerLink="index.html">
+      <a class="navbar-brand navbar-brand-center">
         <img class="navbar-brand-logo" src="assets/img/footer-logo.png" alt="Elephant">
       </a>
       <button class="navbar-toggler visible-xs-block collapsed" type="button" data-toggle="collapse" data-target="#">
@@ -25,7 +25,7 @@
     </div>
     <div class="navbar-toggleable">
       <nav id="navbar" class="navbar-collapse collapse">
-        <button class="sidenav-toggler hidden-xs" title="Collapse sidenav ( [ )" id="home_toggle" aria-expanded="true" type="button" (click)="toggleSidebar()">
+        <button class="sidenav-toggler hidden-xs" title="Collapse sidenav" id="home_toggle" aria-expanded="true" type="button" (click)="toggleSidebar()">
           <span class="sr-only">Toggle navigation</span>
           <span class="bars">
             <span class="bar-line bar-line-1 out"></span>
@@ -162,14 +162,14 @@
             </div>
           </li>
           <li class="dropdown hidden-xs" id="hide_dropdown">
-            <button class="navbar-account-btn" data-toggle="dropdown" aria-haspopup="true" (click)="tooglelogout()">
+            <button class="navbar-account-btn" data-toggle="dropdown" aria-haspopup="true" (mouseenter)="tooglelogout()">
               <img class="rounded" width="36" height="36" src="assets/img/0180441436.jpg" alt="Teddy Wilson"> 
               <!-- Teddy Wilson -->
               <span class="caret"></span>
             </button>
-            <ul class="dropdown-menu dropdown-menu-right">
+            <ul class="dropdown-menu dropdown-menu-right" (mouseleave)="tooglelogout()">
               <li><a routerLink="/profile">Profile</a></li>
-              <li><a (click)="logoutClicked()">Sign out</a></li>
+              <li><a (click)="logoutClicked()" style="cursor: pointer;">Sign out</a></li>
             </ul>
           </li>
 

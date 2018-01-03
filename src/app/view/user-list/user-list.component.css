@@ -1,0 +1,25 @@
+.srch-opt input[type=text] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-image: url(/assets/img/c.png);
+    background-color: white;
+    background-size: 33px;
+    background-position: 5px 1px;
+    background-repeat: no-repeat;
+    padding: 0px 20px 2px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    position: absolute;
+    right: 17px;
+    top: 35px;
+}
+.srch-opt input[type=text]:focus {
+    width: 20%;
+}
+.pagination {
+    margin: 0px !important;
+    cursor: pointer;
+}

@@ -7,7 +7,6 @@ export class ProductaddService {
     constructor(private http:Http){}
     private porductUrl = "http://54.162.3.238:3005/product";
     create(formData: any) {
-        console.log(formData)
         let access_token =localStorage.getItem('access_token'); 
         let headers = new Headers();  
         headers.append('Authorization','Bearer ');
@@ -25,7 +24,6 @@ export class ProductaddService {
         .map((res:Response) => res.json());
     }
     deleteproduct(product_id){
-        console.log(product_id)
         let access_token =localStorage.getItem('access_token'); 
         let data = {product_id};
         let headers = new Headers();  

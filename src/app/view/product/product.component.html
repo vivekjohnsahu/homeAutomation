@@ -39,13 +39,19 @@
                           <div class="form-group">
                               <div class="col-md-8">
                                       <label for="file" class="img_dco fa fa-file-image-o"> IMAGE</label>
-                                      <input type="file" id="file" (change)="fileChange($event)" placeholder="Upload file" accept=".jpg,.jpeg,.png" class="inputfile" multiple>
-                                      <p *ngIf="image_error" style="color:red;">{{image_error_msg}}</p>
+                                      <input type="file" id="file" (change)="fileChange($event)" placeholder="Upload file" accept=".jpg,.jpeg,.png" class="inputfile" multiple (focus)="clean()">
+                                      <p *ngIf="fileList_error" style="color:red;" >{{fileList_error_msg}}</p>
                               </div>
                           </div>
+                                <label for="post_body" class="control-label">FEATURE</label>
+                                <text-editer [elementId]="'post_body'" (onEditorKeyup)="onBodyTextEditorKeyUp($event)" (focus)="clean()"></text-editer>
+                                  <p *ngIf="textValue_error" style="color:red;" >{{textValue_error_msg}}</p>
+                                <label for="post_Specifications_body" class="control-label">SPECIFICATIONS</label>
+                                <text-editer   [elementId]="'post_Specifications_body'" (onEditorKeyup)="onBodySpecificationsTextEditorKeyUp($event)" (focus)="clean()"></text-editer><br>
+                                  <p *ngIf="Specifications_error" style="color:red;" >{{Specifications_error_msg}}</p>
                           <div class="form-group">
                               <div class=" col-sm-8  col-md-8 ">
-                                  <button class="btn btn-primary " type="submit" (click)="add(category_id)" >ADD TO PRODUCT </button>
+                                  <button class="btn btn-primary " type="submit" (click)="add(category_id,defaultBodyValue)" >ADD TO PRODUCT </button>
                                   <button class="btn btn-primary" routerLink="/category" >PRODUCT VIEW</button>
                               </div>
                           </div>
@@ -57,7 +63,8 @@
   </div>
   <div class="col-md-8 panel-body">
       <div *ngFor="let list of fileListUrl; let i = index;" class="col-md-3 p-b-md ">
-        <button class="fa fa-times" aria-hidden="true" (click)="delete_img(i)"></button>
+            <img src="assets/img/3.png"  (click)="delete_img(i)" style="position: relative; left: 102px; bottom: -20px;">
+        <!-- <button class="fa fa-times" aria-hidden="true" (click)="delete_img(i)"></button> -->
           <img [src]="list" width="120px" (click)="delete()"/> 
       </div>
   </div> 

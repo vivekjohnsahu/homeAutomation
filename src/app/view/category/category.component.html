@@ -49,10 +49,9 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor="let p of  current_product | filter : searchText; let i = index;"> 
-                                    <th>{{10*(currentPage-1) + i+1}}</th>
+                                    <th>{{pageSize*(currentPage-1) + i+1}}</th>
                                     <th>{{p.name}}</th>
                                     <th><img height="40px" width="60" src="http://54.162.3.238:3005/{{p.image[0].image_url}}"/></th>
-                                    <!-- <th class="text-center">{{p.description}}</th> -->
                                     <th>{{p.category_name}}</th>
                                     <th>{{p.price}}</th>
                                     <th>
@@ -79,7 +78,7 @@
                         </table><br>
                         <div class="btn-toolbar" role="toolbar" style="margin: 0;">
                             <div class="btn-group">
-                                    <label style="margin-top:10px">Page {{currentPage}}/{{pageNumber}}</label>
+                                 <label style="margin-top:10px">Page {{currentPage}}/{{pageNumber}}</label>
                             </div>
                             <div class="btn-group pull-right">
                                 <ul class="pagination" >
@@ -88,7 +87,6 @@
                                         <a (click)="setPage(page)">{{page}}</a>
                                     </li>
                                     <li [ngClass]="{'disabled': (currentPage == pageNumber || pageNumber == 0)}" ><a (click)="nextPage()">Next</a></li>
-                    
                                    <!-- <select [(ngModel)]="pageSize">  
                                         <option class="paginate_button" value="5"><a>5</a></option>
                                         <option class="paginate_button" value="10"><a>10</a></option>
@@ -127,7 +125,15 @@
                     </div>
                     <div class="col-md-12">
                         <label>PRICE :</label>
-                        <div>{{productD.price}}</div> 
+                        <div>{{productD.price}}</div><br> 
+                    </div> 
+                    <div class="col-md-12">
+                        <label>FEATURES :</label>
+                        <div [innerHTML]="productD.feature"></div> 
+                    </div> 
+                    <div class="col-md-12">
+                        <label>SPECIFICATION :</label>
+                        <div [innerHTML]="productD.specification"></div><br> 
                     </div> 
                 </div>             
         </div>

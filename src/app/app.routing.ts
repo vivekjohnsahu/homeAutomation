@@ -9,6 +9,8 @@ import { MyProfileComponent } from './view/myprofile/myprofile.component';
 import { ChangePasswordComponent } from './view/change-password/change-password.component';
 import { EditProfileComponent } from './view/edit-profile/edit-profile.component';
 import { ProductComponent } from './view/product/product.component';
+import { UserListComponent } from './view/user-list/user-list.component';
+import { ForgotComponent } from './view/forgot/forgot.component';
 
 
 export const routes: Routes = [
@@ -61,11 +63,20 @@ export const routes: Routes = [
       title: 'product'
     }
   },
-  { 
-    path: '', 
-    redirectTo: '/dashboard', 
-    pathMatch: 'full'
-   },
+  {
+    path: 'user-list',
+    component: UserListComponent,
+    data: {
+      title: 'list'
+    }
+  },
+  {
+    path: 'app-forgot',
+    component: ForgotComponent,
+    data: {
+      title: 'forgot'
+    }
+  },
 ];
 
 @NgModule({

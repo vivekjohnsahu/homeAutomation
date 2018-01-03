@@ -21,18 +21,12 @@ export class AppComponent {
 	constructor(private route:ActivatedRoute, router: Router, private _service: AdminService){
 		this.userItem = localStorage.getItem("user");
 		this.access_token = localStorage.getItem('access_token');
-		// console.log()
 		if(this.access_token != null) {
-			router.navigate(['dashboard']);
+			// router.navigate(['dashboard']);
 			this.logoutSession = true;
 			this.user_unique_id = this.userItem.user_id;
-		} else {
+		}else {
 			this.loginSession = true;
 		}
 	}
-    // logout() {
-	// 	localStorage.removeItem("user");
-	// 	localStorage.removeItem("access_token");
-	// 	window.location.replace('');
-	// }
 }

@@ -6,8 +6,11 @@
               <span class="d-ib">Edit Profile </span>
             </h1>
             <p class="title-bar-description">
-                <small>Welcome to Blind Drunk</small>
+                <small>Welcome to Smart Home</small>
             </p>
+        </div>
+        <div *ngFor="let list of fileListUrl; let i = index;" class="p-b-md ">
+            <img class="img_over"  [src]="list"/> 
         </div>
         <div class="row gutter-xs">
             <div class="col-md-8 card panel-body  " id="">
@@ -18,31 +21,31 @@
                                     <div *ngIf="invalid_error" style="color:red;">{{invalid_error_msg}}</div>
                                     <div *ngIf="invalid_error" style="color:green;" >{{success_msg}}&#x2713;</div>
                                 <div class="col-md-8">
-                                    <label for="email-2" class=" control-label">Name</label>
+                                    <label for="name" class=" control-label">NAME</label>
                                     <input id="" class="form-control" name="name"  (focus)="clean()"  type="text" [(ngModel)]="edit.first_name" required>
                                     <p *ngIf="name_error" style="color:red;" >{{name_error_msg}}</p>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-8">
-                                    <label for="email-2" class=" control-label">Phone</label>
+                                    <label for="phone" class="control-label">PHONE</label>
                                     <input id="" class="form-control" type="text" [(ngModel)]="edit.phone_number" required name="phone" max="12" (focus)="clean()">
                                     <p *ngIf="phone_error"  style="color:red;" >{{phone_error_msg}}</p>
                                 </div>
                             </div>
-                            <!-- <div class="form-group">
+                            <div class="form-group">
                                 <div class="col-md-8">
-                                    <label for="email-2" class=" control-label">Image</label>
-                                    <input id="" class="form-control" type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".jpg,.jpeg,.png" required name="image">
+                                    <label for="file" class="img_dco fa fa-file-image-o"> PROFILE IMAGE</label>
+                                    <input type="file" id="file" (change)="fileChange($event)" placeholder="Upload file" accept=".jpg,.jpeg,.png" class="inputfile" (focus)="clean()">
                                 </div>
-                            </div> -->
+                            </div>
                             <div class="form-group">
                                 <div class=" col-sm-8  col-md-8 ">
                                     <button class="btn btn-primary " (click)="add()" type="submit">Submit</button>
                                     <button class="btn btn-primary" routerLink="/profile" type="submit">back</button>
                                 </div>
                             </div>
-                        </form>
+                        </form>                        
                     </div>
                 </div>
             </div>

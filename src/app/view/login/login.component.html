@@ -5,29 +5,24 @@
 		</a>
 		<div class="login-form">
 		<form data-toggle="validator">
-			<div class="errorContainerWrap" *ngIf="showLoginError">
-				<div class="alert alert-danger alert-dismissable fade in">
-					<a class="close" data-dismiss="alert" aria-label="close">×</a>
-					<strong>Error! </strong>
-					<span class="error">{{login_error_msg}}</span>
-				</div>
-			</div>
+			<span style="color:red" *ngIf="valid_error">*{{success_msg}}</span>
 			<div class="form-group">
 				<label for="email">Email</label>
-				<input id="email" class="form-control" type="email" name="email" autocomplete="off" [(ngModel)]="email" required>
-				<span class="error" *ngIf="showEmailError">*{{login_email_msg}}</span>
+				<input id="email" class="form-control" type="email" name="email" autocomplete="off" [(ngModel)]="email" required (focus)="clean()">
+				<span style="color:red" *ngIf="showEmailError">*{{login_email_msg}}</span>
 			</div>
 			<div class="form-group">
 				<label for="password">Password</label>
-				<input id="password" class="form-control" type="password" name="password" [(ngModel)]="password" required>
-				<span class="error" *ngIf="showPasswordError">*{{login_password_msg}}</span>
+				<input id="password" class="form-control" type="password" name="password" [(ngModel)]="password" required (focus)="clean()">
+				<span style="color:red" *ngIf="showPasswordError">*{{login_password_msg}}</span>
 			</div>
 			<div class="form-group">
 				<label class="custom-control custom-control-primary custom-checkbox">
 					<input class="custom-control-input" type="checkbox" checked="checked">
 					<span class="custom-control-indicator"></span>
 					<span class="custom-control-label">Keep me signed in</span>
-				</label>
+				</label><br><br>
+				<!-- <a routerLink="/app-forgot">Forgot password?</a> -->
 			</div>
 			<button class="btn btn-primary btn-block" type="submit" (click)="login()">Sign in</button>
 		</form>

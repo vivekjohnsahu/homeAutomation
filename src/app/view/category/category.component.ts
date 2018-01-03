@@ -14,7 +14,7 @@ export class CategoryComponent  {
   products_detail = [];
   current_product = []; 
   pages : any = [];
-  pageSize : number = 10;
+  pageSize =10;
   pageNumber : number = 0;
   currentPage : number = 0;
   pagesIndex : Array<number>;
@@ -31,14 +31,19 @@ export class CategoryComponent  {
 ngOnInit() {
   this.productaddService.getproduct().subscribe(
     data => {
+      if(data.status == '401'){
+				localStorage.removeItem("user");
+				localStorage.removeItem('access_token');
+				window.location.replace('/Login');
+        return false;
+      }
       this.products_detail = data.response;
+      console.log(this.products_detail)
       this.current_product = this.products_detail.slice(this.startIndex,this.startIndex+this.pageSize);
-      // console.log({product:this.current_product})
       this.currentPage = 1;
       this.pageStart = 1;
       this. loading=false;
       this.no_data_found=true;
-      // console.log(this.products_detail.length);
       this.pageNumber = parseInt(""+ (this.products_detail.length / this.pageSize));
       if(this.products_detail.length % this.pageSize != 0){
           this.pageNumber ++;
@@ -58,10 +63,22 @@ delete(index, i) {
   this.current_product.splice(i,1);
   this.productaddService.deleteproduct(index).subscribe(
     data => {
-      console.log(data);
+      if(data.status == '401'){
+				localStorage.removeItem("user");
+				localStorage.removeItem('access_token');
+				window.location.replace('/Login');
+        return false;
+      }else if(data.status == '401'){
+        localStorage.removeItem("user");
+        localStorage.removeItem('access_token');
+        window.location.replace('/Login');
+        return false;
+      }
     },
     error => {
-      console.log(error);
+      localStorage.removeItem("user");
+      localStorage.removeItem('access_token');
+      window.location.replace('/Login');
     }
   );
 }
@@ -91,8 +108,8 @@ setPage(index : number){
   this.current_product = this.products_detail.slice(this.startIndex,this.startIndex+this.pageSize);
 }
 div_show(index, i){
-  this.details = this.products_detail[10*(this.currentPage-1) + i]["image"];
-  this.productD = this.products_detail[10*(this.currentPage-1) +i];
+  this.details = this.products_detail[this.pageSize*(this.currentPage-1) + i]["image"];
+  this.productD = this.products_detail[this.pageSize*(this.currentPage-1) +i];
   document.getElementById('abc').style.display = "block";
   document.body.scrollTop = document.documentElement.scrollTop = 0;
 }

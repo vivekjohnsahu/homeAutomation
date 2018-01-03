@@ -6,14 +6,12 @@ import 'rxjs/add/operator/map';
 export class EditprofileService {
     constructor(private http:Http){}
     private editUrl = "http://54.162.3.238:3005/admin";
-    edit(edit: any) {
+    edit(formData: any) {
         let access_token =localStorage.getItem('access_token'); 
-        // console.log(access_token);
-        let headers = new Headers({'Content-Type': 'application/json'});  
+        let headers = new Headers();  
         headers.append('Authorization','Bearer ');
         headers.append('access_token',access_token);
-        console.log(headers);
         let options = new RequestOptions({headers: headers});
-        return this.http.put(`${this.editUrl}`, edit,options).map(res => res.json());
+        return this.http.put(`${this.editUrl}`, formData,options).map(res => res.json());
     }
 }
